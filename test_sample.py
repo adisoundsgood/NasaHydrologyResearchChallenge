@@ -1,7 +1,7 @@
 import challenge
 import math
 
-s_filename = 'angles_UCI_CS.csv'
+s_url = "http://rapid-hub.org/data/angles_UCI_CS.csv"
 angleList = [90,60,30,0] # hardcoded to test angles_UCI_CS.csv
 resultList = []
 counter = 0
@@ -13,6 +13,6 @@ for deg in angleList: # create the correct result list to test the code in chall
 
 
 def testAnswer():
-    assert challenge.do_work(s_filename) == resultList
+    assert challenge.do_work(s_url) == resultList
 
 
