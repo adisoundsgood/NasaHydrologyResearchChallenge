@@ -10,9 +10,12 @@ import requests
 
 # Read data from a given csv file with format [station_id],[angle_degrees]
 s_filename = 'angles_UCI_CS.csv'
+s_url = "http://rapid-hub.org/data/angles_UCI_CS.csv"
+angle_header = "angle_cosine_value"
 
 
 def do_work(url):
+
     cosineList = []
     b_firstLineFlag = False
 
@@ -27,8 +30,14 @@ def do_work(url):
         if (len(row) > 1): # Skips the last, empty line
             if (not b_firstLineFlag):  # If  it's the first line of csv file (syntax), skip
                 b_firstLineFlag = True
+                print("\n{} | {} | {}".format(row[0],row[1],angle_header))
             else:
                 angle = math.cos(int(row[1]) * math.pi / 180)
                 cosineList.append(angle)
-                print("station id: {0:>3}, angle in degrees: {1:>3.4}, cosine of angle: {2:3.4f}".format(row[0], row[1], angle))
+                print("{0:>6} {1:>14} {2:>20.4f}".format(row[0], row[1], angle))
+
+    print("")
     return cosineList
+
+
+do_work(s_url)
