@@ -1,6 +1,10 @@
 language: python
 python:
   - "3.6"
+os:
+  - linux
+  - osx
+  - windows
 script:
   - pytest
 install:
